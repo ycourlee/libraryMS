@@ -29,7 +29,6 @@ public class loginFilter implements Filter {
         }
     }
     public void init(FilterConfig config) throws ServletException {
-
     }
 
 }
