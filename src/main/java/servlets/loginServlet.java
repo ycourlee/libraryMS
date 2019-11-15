@@ -28,7 +28,6 @@ public class loginServlet extends HttpServlet {
         if(allowAccessed==-1){
             session.removeAttribute("loggingUser");
 
-//            request.getRequestDispatcher("index.html").forward(request, response);
             response.sendRedirect("loginServlet");
 
         }else if(allowAccessed==1){
