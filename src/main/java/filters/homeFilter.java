@@ -16,9 +16,11 @@ public class homeFilter implements Filter {
         HttpServletRequest r1=(HttpServletRequest)req;
         HttpServletResponse r2=(HttpServletResponse)resp;
         HttpSession session=r1.getSession();
-        String sesIsNull = (String) session.getAttribute("key");
-        if (sesIsNull != null && session.getAttribute("key").equals("normalUser")){
+        String keySes = (String) session.getAttribute("key");
+        if (keySes != null && keySes.equals("normalUser")){
             chain.doFilter(req, resp);
+        }else{
+            r2.sendError(416);
         }
     }
 

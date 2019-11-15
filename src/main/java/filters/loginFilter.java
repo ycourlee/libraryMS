@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "loginFilter", urlPatterns = {"/index.html"})
+//@WebFilter(filterName = "loginFilter", urlPatterns = {"/index.html"})
+/**    暂时不使用    */
 public class loginFilter implements Filter {
 
     public void destroy() {
@@ -19,13 +20,10 @@ public class loginFilter implements Filter {
         HttpSession session=r1.getSession();
         if(session.getAttribute("loggingUser")==null){///刚开始，无登录状态，跳转至loginServlet,但它的url映射到了index.jsp
             r2.sendRedirect("loginServlet");
-            chain.doFilter(req,resp);
         }else if(((String)session.getAttribute("key")).equals("normalUser")){
             r2.sendRedirect("home.jsp");
-            chain.doFilter(req, resp);
         }else if(((String)session.getAttribute("key")).equals("administrator")){
             r2.sendRedirect("backHome.jsp");
-            chain.doFilter(req, resp);
         }
     }
     public void init(FilterConfig config) throws ServletException {
