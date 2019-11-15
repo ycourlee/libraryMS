@@ -1,8 +1,5 @@
 package beans;
 
-import sun.awt.windows.WPrinterJob;
-
-import javax.swing.*;
 import java.util.Date;
 
 public class Book {
