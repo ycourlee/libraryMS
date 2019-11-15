@@ -4,8 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <welcome-file-list>
+    <welcome-file>loginServlet</welcome-file>
+  </welcome-file-list>
   <error-page>
     <exception-type>java.lang.Throwable</exception-type>
+    <location>/WEB-INF/404.html</location>
+  </error-page>
+  <error-page>
+    <error-code>416</error-code>
     <location>/WEB-INF/404.html</location>
   </error-page>
   <error-page>
