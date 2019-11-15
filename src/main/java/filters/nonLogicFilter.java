@@ -22,7 +22,7 @@ public class nonLogicFilter implements Filter {
 
         if(session.getAttribute("loggingUser")!=null){
 //            System.out.println("nonLogicFilter-doFilter()-line: 24");
-            if(keySes.equals("normalUser")||keySes.equals("Administrator")){
+            if(keySes.equals("normalUser")||keySes.equals("administrator")){
 //                System.out.println("nonLogicFilter-doFilter()-line: 26");
                 if(uri.contains(pass[0])){
 //                    System.out.println("nonLogicFilter-doFilter()-line: 28");
@@ -34,7 +34,7 @@ public class nonLogicFilter implements Filter {
                     chain.doFilter(req,resp);
             }
         }
-        else if(uri.contains(pass[0])){
+        else if(uri.contains(pass[0])||uri.contains(pass[2])){
 //            System.out.println("nonLogicFilter-doFilter()-line: 38");
             chain.doFilter(req,resp);
         }

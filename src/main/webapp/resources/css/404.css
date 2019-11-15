@@ -84,7 +84,7 @@ body{
 
 .road .shadow .bubble a{
 	line-height: 140px;
-	font-family: "microsoft yahei";
+	font-family: "microsoft yahei", sans-serif;
 	font-size: 1.5em;
 	color: #F8F8F5;
 	letter-spacing: 1px;
