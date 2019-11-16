@@ -7,14 +7,13 @@
     GetAUser getAUser=new GetAUser();
     userSes = getAUser.getAUser(userSes.getStuNo());
 %>
-<html>
+
+<html lang="ch">
 <head>
+    <meta charset="UTF-8">
     <title>后台</title>
 </head>
 <body>
-<h3>welcome friend</h3>
-<%=userSes.getStuNo()%>
-<%=userSes.getUsername()%>
-<%=userSes.getPassword()%>
+
 </body>
 </html>
