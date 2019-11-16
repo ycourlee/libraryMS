@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "Lato-Light-subfont";
+    src: url("../fonts/Lato/Lato-Light-subfont.woff2") format("woff2"),
+    url("../fonts/Lato/Lato-Light-subfont.woff") format("woff"),
+    url("../fonts/Lato/Lato-Light-subfont.ttf") format("truetype"),
+    url("../fonts/Lato/Lato-Light-subfont.eot") format("embedded-opentype"),
+    url("../fonts/Lato/Lato-Light-subfont.svg") format("svg"),
+    url("../fonts/Lato/Lato-Light-subfont.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato-Light";
+    src: url("../fonts/Lato/Lato-Light.ttf") format("truetype");
+    font-style: normal;
+}
+
+body,div,a{
+    margin: 0;
+    padding: 0;
+}
+*{
+    box-sizing: border-box;
+}
+p{
+    text-decoration: none;
+    user-select: none;
+    margin: 0;
+    padding: 10px 0;
+    line-height: 18px;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+
+}
+#wrap{
+    overflow: hidden;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #eff3f6;
+}
+#menu_zone{
+    position: absolute;
+    background-color: #4d5e70;
+    width: 200px;
+    height: 100%;
+}
+#menu_zone>div{
+    padding-left: 20px;
+}
+#logo_zone{
+    background-color: #354457;
+    color: white;
+    font-family: "Microsoft YaHei UI Light", sans-serif;
+    font-size: 18px;
+}
+.TBCenter{
+    vertical-align: middle;
+    padding: 18px 0;
+}
+#logo_Img{
+    width: 20px;
+}
+#userInfo_zone{
+    font-size: 16px;
+    color: #aab1b7;
+    /*上右下左*/
+    padding: 10px 0 10px 20px;
+    border-bottom: 1px solid #354457;
+}
+#user{
+    margin: 0;
+}
+#stuNo{
+    padding-top: 0;
+    font-size: 12px;
+}
+#logout{
+    margin-top: 10px;
+    font-size: 13px;
+    text-decoration: underline;
+    color: #aab1b7;
+    cursor: pointer;
+}
+.menu_title{
+    color: #828e9a;
+    font-size: 16px;
+}
+.menu_item{
+    line-height: 40px;
+    height: 40px;
+    color: #aab1b7;
+    cursor: pointer;
+}
+.menu_item img{
+    padding-right: 5px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+#show_zone{
+    float: left;
+    padding-left: 220px;
+    height: 100%;
+}
