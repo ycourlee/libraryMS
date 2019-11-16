@@ -16,9 +16,8 @@ public class UserAdd {
      data: 2019/11/16
      **/
     public int userAdd(User u){
-        String sql="insert into `library`.user(`stuNo`, `username`, `password`)" +
-                "value('" + u.getStuNo()+"','"+ u.getUsername()+"','"+ u.getPassword()+ "')";
-
+        String sql="insert into library.user(stuNo, username, password)" +
+                "values('" + u.getStuNo()+"','"+ u.getUsername()+"','"+ u.getPassword()+ "')";
         Connection conn = DBUtil.getConn();
         Statement stmt = null;
         int success=0;

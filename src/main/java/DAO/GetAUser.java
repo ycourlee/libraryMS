@@ -17,12 +17,11 @@ public class GetAUser {
      data: 2019/11/16
      **/
     public User getAUser(String key){
-        String sql="select `stuNo`,`username`,`password` from `library`.user where `stuNo`='"+key+"'";
+        String sql="select stuNo,username,password from library.user where stuNo='"+key+"'";
         Connection conn = DBUtil.getConn();
         Statement stmt=null;
         ResultSet rs=null;
         User u=null;
-
         try{
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
@@ -31,7 +30,6 @@ public class GetAUser {
             u.setStuNo(rs.getString("stuNo"));
             u.setUsername(rs.getString("username"));
             u.setPassword(rs.getString("password"));
-
         } catch (SQLException e) {
             System.out.println("GetAUser-getAUser()-line: 36    "+e);
         }finally {
