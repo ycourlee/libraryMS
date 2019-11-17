@@ -9,7 +9,7 @@ import java.io.IOException;
 
 @WebFilter(filterName = "nonLogicFilter",urlPatterns = "/*")
 public class nonLogicFilter implements Filter {
-    private static String[] pass={"loginServlet","index.html","resources"};
+    private static String[] pass={"loginServlet","index.html","resources","signUp.html"};
     public void destroy() {
     }
 
@@ -34,7 +34,7 @@ public class nonLogicFilter implements Filter {
                     chain.doFilter(req,resp);
             }
         }
-        else if(uri.contains(pass[0])||uri.contains(pass[2])){
+        else if(uri.contains(pass[0])||uri.contains(pass[2])||uri.contains(pass[3])){
 //            System.out.println("nonLogicFilter-doFilter()-line: 38");
             chain.doFilter(req,resp);
         }

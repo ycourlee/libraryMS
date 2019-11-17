@@ -79,6 +79,7 @@
             <resource>
                 <directory>src/main/webapp/resources</directory>
                 <includes>
+                    <include>**/bootstrap-4.0.0-dist/*</include>
                     <include>**/css/*</include>
                     <include>**/fonts/*</include>
                     <include>**/img/*</include>
