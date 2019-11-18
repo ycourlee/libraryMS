@@ -1,5 +1,8 @@
 package filters;
 
+import servlets.loginServlet;
+import servlets.signUpServlet;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +12,7 @@ import java.io.IOException;
 
 @WebFilter(filterName = "nonLogicFilter",urlPatterns = "/*")
 public class nonLogicFilter implements Filter {
-    private static String[] pass={"loginServlet","index.html","resources","signUp.html"};
+    private static String[] pass={"loginServlet","signUp.html","index.html","resources","signUpServlet"};
     public void destroy() {
     }
 
@@ -34,15 +37,23 @@ public class nonLogicFilter implements Filter {
                     chain.doFilter(req,resp);
             }
         }
-        else if(uri.contains(pass[0])||uri.contains(pass[2])||uri.contains(pass[3])){
+        else if(uri.contains(pass[0])||uri.contains(pass[3])||uri.contains(pass[4])){
+            /**    loginServlet resources signUpServlet 这里先放行signUpServlet, 使用精准filter拦截    */
+
 //            System.out.println("nonLogicFilter-doFilter()-line: 38");
             chain.doFilter(req,resp);
         }
-        else{
-//            System.out.println("nonLogicFilter-doFilter()-line: 42");
+        else if(uri.contains(pass[2])){//index.html
             r2.sendRedirect(pass[0]);
         }
-
+        else if(uri.contains(pass[1])){//signUp.html
+//            System.out.println("nonLogicFilter-doFilter()-line: 42");
+            session.setAttribute("wantSignUp","ok");//为访问signUpServlet 制作凭证
+            chain.doFilter(req, resp);
+        }
+        else{
+            r2.sendRedirect(pass[0]);
+        }
     }
 
     public void init(FilterConfig config) throws ServletException {
