@@ -7,15 +7,18 @@ var altDiv2="<div class=\" alert alert-warning col-md-9 m-auto\" id=\"alertDiv2\
     "                <strong>警告!</strong> 验证码不能为空\n" +
     "            </div>";
 
+//全局变量随机数
 var x=parseInt(1000+Math.floor(Math.random()*9000),10);
 var elem =document.getElementById("checkId");
-
 elem.innerText=x.toString();
 
+//新生随机数
 function newOne(){
     x=parseInt(1000+Math.floor(Math.random()*9000),10);
     elem.innerText=x.toString();
 }
+
+//预处理警告提示框
 $(document).ready(function () {
     newOne();
     $("#iptId").val("");
@@ -27,10 +30,12 @@ $(document).ready(function () {
     });
 });
 
+//功能：看不清楚，换一个
 $("#checkId").click(function () {
     newOne();
 });
 
+//验证码检查
 function check() {
 
     var ipt=document.getElementById("iptId");

@@ -30,11 +30,6 @@ public class UserAdd {
         } finally {
             DBUtil.closed(null, stmt, conn);
         }
-
-
-
-
-
         return  success;
     }
 }
