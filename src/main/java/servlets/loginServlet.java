@@ -38,8 +38,10 @@ public class loginServlet extends HttpServlet {
             response.sendRedirect("backHome.jsp");
         }
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("index.html").forward(request, response);//请求转发至index.html, 服务端运行,  url不变
+        String uri=request.getRequestURI();
+        if(uri.contains("index.html")||uri.contains("loginServlet")||uri.contains("WEB-INF")){
+            request.getRequestDispatcher("index.html").forward(request, response);//请求转发至index.html, 服务端运行,  url不变
+        }
     }
 }
