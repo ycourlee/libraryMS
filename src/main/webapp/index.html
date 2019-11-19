@@ -1,14 +1,62 @@
-<!DOCtype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh">
 <head>
+    <title>登录</title>
     <meta charset="UTF-8">
-    <title>login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/selfCustom.css">
+    <link rel="stylesheet" href="resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <script src="resources/bootstrap-4.0.0-dist/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <body>
-<form action="loginServlet" method="post">
-    Enter the stuNo: <input type="text" name="stuNo" required><br/>
-    Enter the password: <input type="password" name="password" required><br/>
-    <input type="submit" value="登录">
-</form>
+<!--登录表单组件，使用网格系统控制大小、位置-->
+<div class="container col-md-4">
+    <!--欢迎语-->
+    <h2 class="text-center pt-md-5 mt-md-5">欢迎使用图书管理系统</h2>
+    <!--放在一个div，使form元素垂直居中-->
+    <div class="row align-items-center justify-content-center login-center">
+        <!--使用p*-*-* 和m*-*-*来控制间距-->
+        <form role="form" class="pt-md-5 mt-md-5 bg-info" onsubmit="return check()" action="loginServlet" method="post">
+            <!--使用输入框组-->
+            <div class="input-group col-md-10 m-auto pb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="stuNo">学号：</label>
+                </div>
+                <input type="text" class="form-control" name="stuNo" id="stuNo" placeholder="stuNo" required>
+            </div>
+            <div class="input-group col-md-10 m-auto pb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="password">密码：</label>
+                </div>
+                <input type="password" class="form-control" name="password" id="password" placeholder="password" required>
+            </div>
+            <div id="check-group" class="input-group col-md-10 m-auto pb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="iptId">验证码：</label>
+                </div>
+                <!--验证码装填-->
+                <input id="iptId" type="text" class="form-control" name="iptId" id="iptId">
+                <!--验证码显示-->
+                <mark id="checkId" class="my-form-control"></mark>
+            </div>
+
+            <div class="input-group col-md-10 m-auto pb-3">
+                <span class="small font-italic font-weight-light offset-md-6">
+                    还没有帐号?
+                    <a class="text-muted" href="signUp.html">注册一个</a>
+                </span>
+            </div>
+            <div class="input-group col-md-10 offset-md-1 pb-3">
+                <button class="btn-success m-auto" type="submit">登录</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+<script src="resources/js/inputCheck.js" type="text/javascript"></script>
 </body>
 </html>
