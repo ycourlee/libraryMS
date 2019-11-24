@@ -10,11 +10,11 @@ import java.sql.Statement;
 
 public class Register {
     public boolean register(User u, Info i){
-        String sql = "insert into library.info(stuNo,academy,grade,majorClass)" +
+        String sql="insert into library.user(stuNo, username, password)" +
+                "values('" + u.getStuNo()+"','"+ u.getUsername()+"','"+ u.getPassword()+ "')";
+        String sql2 = "insert into library.info(stuNo,academy,grade,majorClass)" +
                 "value('"+i.getStuNo()+"','"+i.getAcademy()+"','"+
                 i.getGrade()+"','"+i.getMajorClass()+"')";
-        String sql2="insert into library.user(stuNo, username, password)" +
-                "values('" + u.getStuNo()+"','"+ u.getUsername()+"','"+ u.getPassword()+ "')";
 
         Connection conn = DBUtil.getConn();
         Statement stmt = null;
@@ -37,13 +37,13 @@ public class Register {
             }
         }finally {
             try {
+//                置为默认
                 conn.setAutoCommit(defCommit);
             } catch (SQLException e) {
                 System.out.println("Register-register()-line: 41    "+e);
             }
             DBUtil.closed(null, stmt, conn);
         }
-
         return success;
     }
 }
