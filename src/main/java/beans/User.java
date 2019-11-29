@@ -1,9 +1,9 @@
 package beans;
 
 public class User {
-    private String stuNo;
-    private String username;
-    private String password;
+    private String stuNo=null;
+    private String username=null;
+    private String password=null;
 
     public User() {
     }

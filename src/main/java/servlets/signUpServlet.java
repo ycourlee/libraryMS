@@ -18,7 +18,6 @@ public class signUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         PrintWriter out = response.getWriter();
-
 //        String idCard = (String) session.getAttribute("wantSignUp");
         request.setCharacterEncoding("UTF-8");//加上这句，academy参数就没有在乱码。
         Register sign = new Register();
@@ -26,23 +25,32 @@ public class signUpServlet extends HttpServlet {
         Info i = new Info();
         u.setStuNo(request.getParameter("stuNo"));
         u.setPassword(request.getParameter("password"));
-        u.setUsername("username");
+        u.setUsername(request.getParameter("username"));
         i.setStuNo(request.getParameter("stuNo"));
         i.setAcademy(request.getParameter("academy"));
+        String grade=request.getParameter("gradeRadio");
+        String major = request.getParameter("major");
+        String majorClass=request.getParameter("majorClass");
+        StringBuffer str=null;
+        if(!(grade.equals("")||grade.equals("non"))){
+            i.setGrade(grade);
+        }
+        if(!(major.equals("") || major.equals("non"))){//前端已保证若未选专业，则无法选班级。
+            str=new StringBuffer();
+            str.append(major);
+            if(!(majorClass.equals("")||majorClass.equals("non"))){
+                str.append(majorClass);
+            }
+            i.setMajorClass(str.toString());
+        }
+        boolean res=sign.register(u,i);
+        if(res){
+            session.setAttribute("signSuccess", "yes");
+            response.sendRedirect("signSuccess.html");
+        }
 
         System.out.println(u.toString());
         System.out.println(i.toString());
-
-//        sign.register(u,i);
-
-
-        session.setAttribute("signSuccess", "yes");
-        response.sendRedirect("signSuccess.html");
-
-
-
-
-
 
         //这里要把凭证销毁，确保这个页面一次只会对应一个凭证
         session.removeAttribute("wantSignUp");

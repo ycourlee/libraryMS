@@ -1,16 +1,16 @@
 package beans;
 
 public class Info {
-    private String stuNo;
-    private int grade;
-    private String academy;
-    private String majorClass;
-    private int BWNum;
-    private String userComment;
+    private String stuNo=null;
+    private String grade=null;
+    private String academy=null;
+    private String majorClass=null;
+    private int BWNum=0;
+    private String userComment=null;
     public Info() {
     }
 
-    public Info(String stuNo, int grade, String academy, String majorClass) {
+    public Info(String stuNo, String grade, String academy, String majorClass) {
         this.stuNo = stuNo;
         this.grade = grade;
         this.academy = academy;
@@ -25,11 +25,11 @@ public class Info {
         this.stuNo = stuNo;
     }
 
-    public int getGrade() {
+    public String getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(String grade) {
         this.grade = grade;
     }
 
@@ -69,7 +69,7 @@ public class Info {
     public String toString() {
         return "Info{" +
                 "stuNo='" + stuNo + '\'' +
-                ", grade=" + grade +
+                ", grade='" + grade + '\'' +
                 ", academy='" + academy + '\'' +
                 ", majorClass='" + majorClass + '\'' +
                 ", BWNum=" + BWNum +

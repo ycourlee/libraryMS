@@ -3,12 +3,12 @@ package beans;
 import java.util.Date;
 
 public class BorrowRecord {
-    private int recordId;
-    private String stuNo;
-    private String bookNo;
-    private int borrowDays;
-    private Date deadline;
-    private String BWComment;
+    private int recordId=1;
+    private String stuNo=null;
+    private String bookNo=null;
+    private int borrowDays=1;
+    private Date deadline=null;
+    private String BWComment=null;
 
     public BorrowRecord() {
     }

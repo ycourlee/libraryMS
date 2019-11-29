@@ -77,10 +77,11 @@
 <!--                        <option>2018级</option>-->
 <!--                        <option>2019级</option>-->
 <!--                    </select>-->
-                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio">2016级</label>
-                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio">2017级</label>
-                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio">2018级</label>
-                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio">2019级</label>
+                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio" value="non" checked>---</label>
+                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio" value="2016级">2016级</label>
+                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio" value="2017级">2017级</label>
+                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio" value="2018级">2018级</label>
+                    <label class="radio-inline mb-0"><input type="radio" name="gradeRadio" value="2019级">2019级</label>
                 </div>
             </div>
 <!--            专业选择控件，跟着学院改变-->
@@ -89,7 +90,7 @@
                     <label class="input-group-text" for="major">专业：</label>
                 </div>
                 <div class="form-control form-group">
-                    <select class="form-control custom-select" id="major" onchange="lianDong2()">
+                    <select class="form-control custom-select" name="major" id="major" onchange="lianDong2()">
                         <option class="init-show" value="non" selected>---</option>
 <!--                        经管专业-->
                         <option class="jg-academy" value="工商管理">工商管理</option>
@@ -125,7 +126,7 @@
                 </div>
 <!--                班级选项，应该不变，不设class属性，易于jquery选择-->
                 <div class="form-control form-group">
-                    <select class="form-control custom-select" id="majorClass" onchange="lianDong3()">
+                    <select class="form-control custom-select" name="majorClass" id="majorClass" onchange="lianDong3()">
                         <option class="init-show" value="non" selected>---</option>
                         <option class="init-show" value="1班">1班</option>
                         <option class="init-show" value="2班">2班</option>
