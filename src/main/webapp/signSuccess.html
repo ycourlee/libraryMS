@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>倒计时五秒后跳页面</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="resources/bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="resources/bootstrap-4.0.0-dist/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script>
+        function countDown(){
+            //获取初始时间
+            var time = document.getElementById("Time");
+
+            //获取到id为time标签中的数字时间
+            if(parseInt(time.innerHTML) === 0){
+                //等于0时清除计时，并跳转该指定页面
+                window.location.href="http://localhost:8080/loginServlet";
+            }else{
+                time.innerHTML =(String)( parseInt(time.innerHTML)-1);
+            }
+        }
+        //1000毫秒调用一次
+        window.setInterval("countDown()",1000);
+    </script>
+    <style>
+        #Time{
+            font-size: 20px;
+            text-align: center;
+        }
+        .Font{
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<p class="Font">注册成功!</p><br/>
+<span class="text-info"><p id="Time">3</p></span>
+<p class="Font">秒后将跳转至登录页面</p>
+</body>
+</html>

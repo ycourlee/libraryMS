@@ -1,8 +1,5 @@
 package filters;
 
-import servlets.loginServlet;
-import servlets.signUpServlet;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +9,7 @@ import java.io.IOException;
 
 @WebFilter(filterName = "nonLogicFilter",urlPatterns = "/*")
 public class nonLogicFilter implements Filter {
-    private static String[] pass={"loginServlet","signUp.html","index.html","resources","signUpServlet"};
+    private static String[] pass={"loginServlet","signUp.html","index.html","resources","signUpServlet","signSuccess.html"};
     public void destroy() {
     }
 
@@ -50,6 +47,12 @@ public class nonLogicFilter implements Filter {
 //            System.out.println("nonLogicFilter-doFilter()-line: 42");
             session.setAttribute("wantSignUp","ok");//为访问signUpServlet 制作凭证
             chain.doFilter(req, resp);
+        }
+        else if(uri.contains(pass[5])){//signSuccess
+            String signSes=(String) session.getAttribute("signSuccess");
+            if(signSes!=null&&signSes.equals("yes")){
+                chain.doFilter(req,resp);
+            }
         }
         else{
             r2.sendRedirect(pass[0]);

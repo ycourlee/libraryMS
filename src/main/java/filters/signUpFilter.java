@@ -16,11 +16,11 @@ public class signUpFilter implements Filter {
         HttpServletRequest r1 = (HttpServletRequest) req;
         HttpServletResponse r2=(HttpServletResponse)resp;
         HttpSession session=r1.getSession();
-        String idCrad= (String) session.getAttribute("wantSignUp");
-        if(idCrad!=null&&idCrad.equals("ok")){
+        String idCard= (String) session.getAttribute("wantSignUp");
+        if(idCard!=null&&idCard.equals("ok")){
             chain.doFilter(req,resp);
         }else{
-            r2.sendError(416);
+            r1.getRequestDispatcher("nonLogicAccess.html").forward(r1,r2);
         }
     }
 
