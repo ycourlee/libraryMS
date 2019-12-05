@@ -21,6 +21,7 @@ public class loginServlet extends HttpServlet {
         loggingUser.setPassword(request.getParameter("password"));
 
         HttpSession session=request.getSession();
+        ///这里存整个class，只存String型stuNo也可
         session.setAttribute("loggingUser",loggingUser);
 
         LoggingChecked check=new LoggingChecked();

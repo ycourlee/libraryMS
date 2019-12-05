@@ -7,6 +7,8 @@
     if(ses.getAttribute("loggingUser")!=null)
         userSes=(User)ses.getAttribute("loggingUser");
     GetAUser getAUser=new GetAUser();
+
+    assert userSes != null;
     userSes = getAUser.getAUser(userSes.getStuNo());
 %>
 <html>
@@ -14,6 +16,11 @@
     <meta charset="UTF-8"/>
     <title>后台管理</title>
     <link rel="stylesheet" href="resources/css/basicUi.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="resources/bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="resources/bootstrap-4.0.0-dist/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="wrap">
@@ -23,9 +30,9 @@
             <span class="TBCenter">图书后台管理</span>
         </div>
         <div id="userInfo_zone">
-            <p id="user">管理员</p>
+            <p id="user"><%=userSes.getUsername()%></p>
             <p id="stuNo">
-                <span>1234567891</span>
+                <span><%=userSes.getStuNo()%></span>
             </p>
             <p>
                 <a href="#" id="logout">退出登录</a>
@@ -82,6 +89,12 @@
         </div>
     </div>
     <div id="show_zone">
+        <div id="borrowManege">
+            <button class="btn btn-outline-warning mt-3 mb-3" type="button">添加记录</button>
+            <div id="tables">
+
+            </div>
+        </div>
 
     </div>
 </div>
