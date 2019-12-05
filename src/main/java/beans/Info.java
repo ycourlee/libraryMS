@@ -2,6 +2,7 @@ package beans;
 
 public class Info {
     private String stuNo=null;
+    private String username=null;
     private String grade=null;
     private String academy=null;
     private String majorClass=null;
@@ -23,6 +24,14 @@ public class Info {
 
     public void setStuNo(String stuNo) {
         this.stuNo = stuNo;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getGrade() {
@@ -69,6 +78,7 @@ public class Info {
     public String toString() {
         return "Info{" +
                 "stuNo='" + stuNo + '\'' +
+                ", username='" + username + '\'' +
                 ", grade='" + grade + '\'' +
                 ", academy='" + academy + '\'' +
                 ", majorClass='" + majorClass + '\'' +
