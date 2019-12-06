@@ -89,7 +89,7 @@
         信息设置
     </div>
 </div>--%>
-
+<%--左边菜单栏--%>
 <div class="pl-4 col-2 h-100 bg-info float-left">
     <div class="mt-3 mb-3">
         <img class="rounded" src="resources/img/charB.jpg" alt="logo" width="26">
@@ -130,92 +130,165 @@
     </div>
     <div class="btn-group-vertical">
         <p class="mt-3 mb-1">图书管理</p>
-        <button type="button" class="btn btn-info text-dark"><img src="resources/img/icon_house_grey.png" alt="馆藏信息" width="24">
+        <button type="button" class="btn btn-info text-dark"><img src="resources/img/icon_house_grey.png" alt="馆藏信息"
+                                                                  width="24">
             馆藏信息
         </button>
-        <button type="button" class="btn btn-info text-dark"><img src="resources/img/icon_user_grey.png" alt="添加图书" width="24">
+        <button type="button" class="btn btn-info text-dark"><img src="resources/img/icon_user_grey.png" alt="添加图书"
+                                                                  width="24">
             添加图书
         </button>
     </div>
 
     <div class="btn-group-vertical">
         <p class="mt-3 mb-1">设置</p>
-        <button type="button" class="btn btn-info text-dark"><img src="resources/img/icon_rule_grey.png" alt="信息设置" width="24">
+        <button type="button" class="btn btn-info text-dark"><img src="resources/img/icon_rule_grey.png" alt="信息设置"
+                                                                  width="24">
             信息设置
         </button>
     </div>
 </div>
-<div class="float-left container col-10 h-100 bg-light">
-    <%--        借阅管理--%>
-    <div>
-        <button class="btn btn-outline-warning mt-3 mb-3" type="button">添加记录</button>
-        <div class="">
-            <table class="table table-hover">
-                <thead class="w-75 thead-light">
-                <tr>
-                    <th>记录号</th>
-                    <th>书名</th>
-                    <th>借阅人学号</th>
-                    <th>借阅人姓名</th>
-                    <th>借阅天数</th>
-                    <th>借阅期限</th>
-                </tr>
-                </thead>
-                <tbody class="w-100">
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>6</td>
-                    <td>6</td>
-                    <td>6</td>
-                    <td>6</td>
-                    <td>6</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+<%--右边内容区--%>
+<div class="float-left container col-10 bg-light">
+    <%--    借阅管理--%>
+    <button class="btn btn-outline-warning mt-3 mb-3" type="button">添加记录</button>
+    <div class="container-fluid mr-0 ml-0">
+        <table class="table table-hover row mx-0">
+            <thead class="w-100 thead-light">
+            <tr class="row">
+                <th class="col-1">记录号</th>
+                <th class="col-2">书名</th>
+                <th class="col-2">借阅人学号</th>
+                <th class="col-2">借阅人姓名</th>
+                <th class="col-1">借阅天数</th>
+                <th class="col-2 text-right">借阅期限</th>
+                <th class="col-2 text-right">操作</th>
+            </tr>
+            </thead>
+            <tbody class="w-100">
+            <tr class="row">
+                <th class="col-1">1</th>
+                <td class="col-2">1</td>
+                <td class="col-2">1</td>
+                <td class="col-2">1</td>
+                <td class="col-1">1</td>
+                <td class="col-2 text-right">1</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <th class="col-1">2</th>
+                <td class="col-2">2</td>
+                <td class="col-2">2</td>
+                <td class="col-2">2</td>
+                <td class="col-1">2</td>
+                <td class="col-2 text-right">2</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <th class="col-1">3</th>
+                <td class="col-2">3</td>
+                <td class="col-2">3</td>
+                <td class="col-2">3</td>
+                <td class="col-1">3</td>
+                <td class="col-2 text-right">3</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <th class="col-1">4</th>
+                <td class="col-2">4</td>
+                <td class="col-2">4</td>
+                <td class="col-2">4</td>
+                <td class="col-1">4</td>
+                <td class="col-2 text-right">4</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <th class="col-1">4</th>
+                <td class="col-2">4</td>
+                <td class="col-2">4</td>
+                <td class="col-2">4</td>
+                <td class="col-1">4</td>
+                <td class="col-2 text-right">4</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <th class="col-1">5</th>
+                <td class="col-2">5</td>
+                <td class="col-2">5</td>
+                <td class="col-2">5</td>
+                <td class="col-1">5</td>
+                <td class="col-2 text-right">5</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <th class="col-1">6</th>
+                <td class="col-2">6</td>
+                <td class="col-2">6</td>
+                <td class="col-2">6</td>
+                <td class="col-1">6</td>
+                <td class="col-2 text-right">6</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <th class="col-1">7</th>
+                <td class="col-2">7</td>
+                <td class="col-2">7</td>
+                <td class="col-2">7</td>
+                <td class="col-1">7</td>
+                <td class="col-2 text-right">7</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <th class="col-1">8</th>
+                <td class="col-2">8</td>
+                <td class="col-2">8</td>
+                <td class="col-2">8</td>
+                <td class="col-1">8</td>
+                <td class="col-2 text-right">8</td>
+                <td class="col-2 text-right">
+                    <button class="btn btn-success btn-sm" type="button">修改</button>
+                    <button class="btn btn-danger btn-sm" type="button">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+
+</div>
+<div class="float-right mr-2">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link">Previous</a></li>
+        <li class="page-item"><a class="page-link">1</a></li>
+        <li class="page-item"><a class="page-link">2</a></li>
+        <li class="page-item"><a class="page-link">3</a></li>
+        <li class="page-item"><a class="page-link">Next</a></li>
+    </ul>
+
 </div>
 
-<%--</div>--%>
 </body>
 </html>
