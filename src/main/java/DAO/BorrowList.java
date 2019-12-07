@@ -20,7 +20,7 @@ public class BorrowList {
         brlist=new ArrayList<>();
         String sql="select recordId, bookName, user.stuNo, username, borrowDays, deadline from " +
                 "library.borrowrecord inner join library.user inner join library.book " +
-                "where borrowrecord.stuNo=user.stuNo and borrowrecord.bookNo=book.bookNo";
+                "where borrowrecord.stuNo=user.stuNo and borrowrecord.bookNo=book.bookNo ORDER BY recordId";
         Connection conn = DBUtil.getConn();
         Statement stmt = null;
         ResultSet rs=null;

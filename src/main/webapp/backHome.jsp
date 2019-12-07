@@ -2,11 +2,12 @@
 <%@ page import="DAO.GetAUser" %>
 <%@ page import="beans.BorrowRecord" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="DAO.BorrowList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%
     int pageSize = 8;
     int totalLines = 20;
-    int pageNow = 2;
+    int pageNow = 1;
     int totalPages;
 
     HttpSession ses = request.getSession();
@@ -27,6 +28,7 @@
     <script src="resources/bootstrap-4.0.0-dist/js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
     <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="resources/js/backHome.js"></script>
 </head>
 <body>
 <%--左边菜单栏--%>
@@ -44,9 +46,8 @@
             </small>
         </p>
         <p class="mt-1 mb-0">
-            <a href="#" class="text-primary"><small>退出登录</small></a>
+            <a href="/logoutServlet" class="text-primary"><small>退出登录</small></a>
         </p>
-
     </div>
     <div class="btn-group-vertical">
         <p class="mt-3 mb-1">借阅与归还</p>
@@ -106,7 +107,7 @@
 
                 <!-- 模态框主体 -->
                 <div class="modal-body">
-                    <form id="insert" role="form" action="#" method="get">
+                    <form id="insert" role="form" action="" method="get">
                         <div class="input-group pb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="stuNo">借阅人学号：</label>
@@ -114,11 +115,18 @@
                             <input type="text" class="form-control" name="stuNo" id="stuNo" placeholder="1000111000"
                                    required>
                         </div>
-                        <div class="input-group">
+                        <div class="input-group pb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="bookNo">借阅书籍号：</label>
                             </div>
-                            <input type="password" class="form-control" name="text" id="bookNo" placeholder="password"
+                            <input type="text" class="form-control" name="text" id="bookNo"
+                                   required>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="brDays">借阅的天数：</label>
+                            </div>
+                            <input type="text" class="form-control" name="text" id="brDays"
                                    required>
                         </div>
                     </form>
@@ -147,18 +155,17 @@
             </thead>
             <tbody class="w-100">
             <%
-                ArrayList<BorrowRecord> brs = new ArrayList<>();
-
+                ArrayList<BorrowRecord> brs ;
+                BorrowList brl=new BorrowList();
+                brs=brl.getBRList();
                 BorrowRecord br;
-                for (int i = 1; i <= totalLines; i++) {
-                    br = new BorrowRecord();
-                    brs.add(br);
-                }
+                totalLines=brs.size();
                 totalPages = (int) Math.ceil(totalLines * 1.0 / pageSize);
                 System.out.println(totalPages);
+                //<a href=\"/deleteBrServlet?id=" + brs.get(i).getRecordId() + "\">
                 if (pageNow == totalPages) {
-                    for (int i = (pageNow - 1) * pageSize + 1; i <= totalLines; i++) {
-                        out.println("<tr class=\"row\">\n" +
+                    for (int i = (pageNow - 1) * pageSize ; i <= totalLines; i++) {
+                        out.println("<tr id=\"tr"+brs.get(i).getRecordId()+"\" class=\"row\">\n" +
                                 "                <th class=\"col-1\">" + brs.get(i).getRecordId() + "</th>\n" +
                                 "                <td class=\"col-2\">" + brs.get(i).getBookName() + "</td>\n" +
                                 "                <td class=\"col-2\">" + brs.get(i).getStuNo() + "</td>\n" +
@@ -167,13 +174,13 @@
                                 "                <td class=\"col-2 text-right\">" + brs.get(i).getDeadline() + "</td>\n" +
                                 "                <td class=\"col-2 text-right\">\n" +
                                 "                    <button class=\"btn btn-success btn-sm\" type=\"button\">修改</button>\n" +
-                                "                    <button class=\"btn btn-danger btn-sm\" type=\"button\" data-toggle=\"modal\" data-target=\"#deleteModal\">删除</button>\n" +
+                                "                    <button class=\"btn btn-danger btn-sm\" type=\"button\" data-toggle=\"modal\" onclick=\"deleteFn(" + brs.get(i).getRecordId() + ")\">删除</button>\n" +
                                 "                </td>\n" +
                                 "            </tr>");
                     }
                 } else {
-                    for (int i = (pageNow - 1) * pageSize + 1; i <= pageNow * pageSize; i++) {
-                        out.println("<tr class=\"row\">\n" +
+                    for (int i = (pageNow - 1) * pageSize ; i <= pageNow * pageSize-1; i++) {
+                        out.println("<tr id=\"tr"+brs.get(i).getRecordId()+"\"  class=\"row\">\n" +
                                 "                <th class=\"col-1\">" + brs.get(i).getRecordId() + "</th>\n" +
                                 "                <td class=\"col-2\">" + brs.get(i).getBookName() + "</td>\n" +
                                 "                <td class=\"col-2\">" + brs.get(i).getStuNo() + "</td>\n" +
@@ -182,14 +189,13 @@
                                 "                <td class=\"col-2 text-right\">" + brs.get(i).getDeadline() + "</td>\n" +
                                 "                <td class=\"col-2 text-right\">\n" +
                                 "                    <button class=\"btn btn-success btn-sm\" type=\"button\">修改</button>\n" +
-                                "                    <button class=\"btn btn-danger btn-sm\" type=\"button\" data-toggle=\"modal\" data-target=\"#deleteModal\">删除</button>\n" +
+                                "                    <button class=\"btn btn-danger btn-sm\" type=\"button\" data-toggle=\"modal\" onclick=\"deleteFn(" + brs.get(i).getRecordId() + ")\">删除</button>\n" +
                                 "                </td>\n" +
                                 "            </tr>");
                     }
                 }
 
             %>
-
             </tbody>
         </table>
     </div>
@@ -225,28 +231,6 @@
         </ul>
     </div>
 
-    <%--    删除操作模态框--%>
-    <div class="modal fade" id="deleteModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- 模态框头部 -->
-                <div class="modal-header">
-                    <h4 class="modal-title">confirm!</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- 模态框主体 -->
-                <div class="modal-body">
-                    <p class="text-danger">一经删除不可撤销！您确认删除吗？</p>
-                </div>
-                <!-- 模态框底部 -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-danger">删除</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 </body>

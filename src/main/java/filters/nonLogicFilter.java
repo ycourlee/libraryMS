@@ -53,6 +53,9 @@ public class nonLogicFilter implements Filter {
             if(signSes!=null&&signSes.equals("yes")){
                 chain.doFilter(req,resp);
             }
+        }else if(uri.contains("Servlet")){
+            System.out.println("kk");
+            chain.doFilter(req, resp);
         }
         else{
             r2.sendRedirect(pass[0]);
