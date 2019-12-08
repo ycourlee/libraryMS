@@ -18,13 +18,15 @@ public class DeleteBrServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
-        System.out.println(id);
+        System.out.println("将要删除的键"+id);
         DelBR del=new DelBR();
         int success=del.delBR(Integer.parseInt(id));
+        resp.setContentType("text/html;charset=utf-8");
         if(success==1)
         {
-            resp.setContentType("text/html;charset=utf-8");
-            resp.getWriter().write("删除成功了!");
+            resp.getWriter().write("删除成功!");
+        }else {
+            resp.getWriter().write("删除失败！");
         }
     }
 

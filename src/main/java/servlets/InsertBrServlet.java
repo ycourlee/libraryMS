@@ -25,12 +25,12 @@ public class InsertBrServlet extends HttpServlet {
 
         InsertBR inst = new InsertBR();
         int success=inst.insertBR(br);
+        response.setContentType("text/html;charset=utf-8");
         if (success==1) {
-            response.setContentType("text/html;charset=utf-8");
-            response.getWriter().write("添加成功！");
+            response.getWriter().write("插入成功！");
         }
         else{
-            response.getWriter().write("操作失败！");
+            response.getWriter().write("插入失败！");
         }
 
     }
