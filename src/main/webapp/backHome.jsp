@@ -230,7 +230,11 @@
             <li class="page-item">
                 <label class="page-link disabled" onselectstart="return false">
                     显示第
-                    <span id="pageNow">1</span>页：1-<%=pageSize%>条记录，共
+                    <span id="pageNow">1</span>页：
+                    <span id="stRd">1</span>-
+                    <span id="edRd">
+                        <%=pageSize%>
+                    </span>条记录，共
                     <span id="totalPages">
                         <%=totalPages%>
                     </span>

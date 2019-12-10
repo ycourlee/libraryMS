@@ -110,34 +110,100 @@ $(document).ready(function () {
     var curPage$ = $("#curPage");
     var edPage$ = $("#edPage");
 
+    //显示当前页、第几条至第几条
+    var pageNow$ = $("#pageNow");
+    var stRd$ = $("#stRd");
+    var edRd$ = $("#edRd");
+    var jumpNo$ = $("#jumpPNo");
+
+    var pageSize = parseInt(edRd$.text());
     var totalPages = parseInt($("#totalPages").text());//不转整型的话，是串，有空格、回车什么的
 
+    //点击前一页
     $("#prePage").click(function () {
-        if (parseInt(curPage$.text()) != totalPages) {
+        var v = parseInt(curPage$.text());
+        totalPages = parseInt($("#totalPages").text());
+        if (v != totalPages) {
             edPage$.removeClass("disabled");
         }
         if (parseInt(curPage$.text()) > 1) {
-            pageHide(parseInt(curPage$.text()));
-            pageShow(parseInt(curPage$.text()) - 1);
-            curPage$.text(parseInt(curPage$.text()) - 1);
+
+            pageHide(v);
+            pageShow(v - 1);
+            curPage$.text(v - 1);
+            jumpNo$.val(v - 1);
+
+            pageNow$.text(v - 1);
+            stRd$.text((v - 1 - 1) * pageSize + 1);
+            edRd$.text((v - 1) * pageSize);
+
             if (parseInt(curPage$.text()) == 1) {
                 stPage$.addClass("disabled");
             }
         }
     });
 
+    //点击后一页
     $("#nextPage").click(function () {
-        if (parseInt(curPage$.text()) != 1) {
+        var v = parseInt(curPage$.text());
+        if (v != 1) {
             stPage$.removeClass("disabled");
         }
-        if (parseInt(curPage$.text()) < totalPages) {
-            pageHide(parseInt(curPage$.text()));
-            pageShow(parseInt(curPage$.text()) + 1);
-            curPage$.text(parseInt(curPage$.text()) + 1);
+        totalPages = parseInt($("#totalPages").text());
+        if (v < totalPages) {
+            pageHide(v);
+            pageShow(v + 1);
+            curPage$.text(v + 1);
+            jumpNo$.val(v + 1)
+
+            pageNow$.text(v + 1);
+            stRd$.text((v + 1 - 1) * pageSize + 1);
+            edRd$.text((v + 1) * pageSize);
+
             if (parseInt(curPage$.text()) == totalPages) {
                 edPage$.addClass("disabled");
             }
         }
+    });
+
+    /**
+     * 当点击回到首页、尾页时
+     */
+    //回首页
+    stPage$.click(function () {
+        var v = parseInt(curPage$.text());
+        if (v != 1) {
+            stPage$.removeClass("disabled");
+        }
+        pageHide(parseInt(curPage$.text()));
+        pageShow(1);
+        curPage$.text(1);
+        jumpNo$.val(1);
+
+        pageNow$.text(1);
+        stRd$.text((1 - 1) * pageSize + 1);
+        edRd$.text(1 * pageSize);
+
+        stPage$.addClass("disabled");
+    });
+    //回尾页
+    edPage$.click(function () {
+        var v = parseInt(curPage$.text());
+        totalPages = parseInt($("#totalPages").text());
+        if (v != totalPages) {
+            edPage$.removeClass("disabled");
+        }
+        totalPages = parseInt($("#totalPages").text());
+        pageHide(parseInt(curPage$.text()));
+        pageShow(totalPages);
+        curPage$.text(totalPages);
+        jumpNo$.val(totalPages);
+
+        pageNow$.text(totalPages);
+        stRd$.text((totalPages - 1) * pageSize + 1);
+        edRd$.text(totalPages * pageSize);
+
+        edPage$.addClass("disabled");
     });
 
     /**
@@ -157,19 +223,24 @@ $(document).ready(function () {
      */
     $("#pageJump").click(function () {
         totalPages = parseInt($("#totalPages").text());
-        var v = $("#jumpPNo").val();
-        var val = parseInt(v);
+        var str = jumpNo$.val();
+        var v = parseInt(str);
         var reg = /\D/;
-        if (reg.test(v)) {
+        if (reg.test(str)) {
             alert("页码不正确，请重新输入！");
-        } else if (val > totalPages) {
-            alert("共有"+totalPages+"，输入的页码过大！");
-        } else if (val < 1) {
+        } else if (v > totalPages) {
+            alert("共有" + totalPages + "，输入的页码过大！");
+        } else if (v < 1) {
             alert("请输入不小1的页码！");
         } else {
             pageHide(parseInt(curPage$.text()));
-            pageShow(parseInt(v));
+            pageShow(v);
             curPage$.text(v);
+            jumpNo$.val(v);
+
+            pageNow$.text(v);
+            stRd$.text((v - 1) * pageSize + 1);
+            edRd$.text(v * pageSize);
         }
     })
 
