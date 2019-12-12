@@ -42,4 +42,12 @@
     <servlet-name>InsertBrServlet</servlet-name>
     <url-pattern>/InsertBrServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateBrServlet</servlet-name>
+    <servlet-class>servlets.UpdateBrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateBrServlet</servlet-name>
+    <url-pattern>/UpdateBrServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

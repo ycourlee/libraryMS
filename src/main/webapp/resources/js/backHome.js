@@ -11,15 +11,8 @@ $(document).ready(function () {
      * 清空为菜单按钮设置的右边框style
      */
     function emp() {
-        /*brBtn$.removeAttr("style");
-        wyBtn$.removeAttr("style");
-        tjBtn$.removeAttr("style");
-        xsBtn$.removeAttr("style");
-        gcBtn$.removeAttr("style");
-        tjTsBtn$.removeAttr("style");
-        xxBtn$.removeAttr("style");*/
-        // $("button[style='border-right: 2px solid #000;border-bottom-right-radius: 0;border-top-right-radius: 0']").removeAttr("style");
-        $("button").removeAttr("style");
+        $("button[style='border-right: 2px solid #000;border-bottom-right-radius: 0;border-top-right-radius: 0']").removeAttr("style");
+        // $("button").removeAttr("style");//这句话会让 修改 按钮显示
     }
 
 
@@ -242,7 +235,19 @@ $(document).ready(function () {
             stRd$.text((v - 1) * pageSize + 1);
             edRd$.text(v * pageSize);
         }
-    })
+    });
+
+    /*由于修改按钮很多，这里采用触发的方式，每个按钮的点击都会触发总按钮，就只需要一个模态框了*/
+    $("#mainBtn").click(function (event,id) {
+        var str="#tr"+id;
+        // alert($(str).children(".td1").text());
+        var sel$=$(str);
+        $("#recordId").val(sel$.children(".td1").text());
+        $("#upBookName").val(sel$.children(".td2").text());
+        $("#bPStuNo").val(sel$.children(".td3").text());
+        $("#bPName").val(sel$.children(".td4").text());
+        $("#newBrDays").val(sel$.children(".td5").text());
+    });
 
 });
 
@@ -280,4 +285,26 @@ function insertFn(form) {
         dataType: "text"
     });
 
+}
+
+function updateFn(form) {
+    var key=document.forms[form]["recordId"].value;
+    var newBrDays = document.forms[form]["newBrDays"].value;
+    $.ajax({
+        method: "post",
+        url: "/UpdateBrServlet",
+        data: {"newBrDays": newBrDays, "key": key},
+        success: function (data) {
+            alert(data);
+            location.href = "/backHome.jsp";
+        },
+        dataType: "text"
+    });
+
+}
+
+//每个修改按钮都要执行
+function updateBtn(id) {
+    // alert(id);
+    $("#mainBtn").trigger("click",id);
 }

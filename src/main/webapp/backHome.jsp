@@ -108,6 +108,11 @@
         <button class="btn btn-outline-warning mt-3 mb-3" type="button" data-toggle="modal" data-target="#addModal">
             添加记录
         </button>
+        <button id="mainBtn" style="display: none" class="btn btn-outline-warning mt-3 mb-3" type="button"
+                data-toggle="modal"
+                data-target="#updateModal">
+            修改
+        </button>
         <%--        添加借阅记录模态框--%>
         <div class="modal fade" id="addModal">
             <div class="modal-dialog">
@@ -179,14 +184,14 @@
 
                         for (int i = (pageNow - 1) * pageSize; i < totalLines && i < pageNow * pageSize; i++) {
                             out.println("               <tr style=\"display: none\" id=\"tr" + brs.get(i).getRecordId() + "\"  class=\"row page" + pageNow + "\">\n" +
-                                    "                   <th class=\"col-1\">" + brs.get(i).getRecordId() + "</th>\n" +
-                                    "                   <td class=\"col-2\">" + brs.get(i).getBookName() + "</td>\n" +
-                                    "                   <td class=\"col-2\">" + brs.get(i).getStuNo() + "</td>\n" +
-                                    "                   <td class=\"col-2\">" + brs.get(i).getUsername() + "</td>\n" +
-                                    "                   <td class=\"col-1\">" + brs.get(i).getBorrowDays() + "</td>\n" +
-                                    "                   <td class=\"col-2 text-right\">" + brs.get(i).getDeadline() + "</td>\n" +
+                                    "                   <th class=\"col-1 td1\">" + brs.get(i).getRecordId() + "</th>\n" +
+                                    "                   <td class=\"col-2 td2\">" + brs.get(i).getBookName() + "</td>\n" +
+                                    "                   <td class=\"col-2 td3\">" + brs.get(i).getStuNo() + "</td>\n" +
+                                    "                   <td class=\"col-2 td4\">" + brs.get(i).getUsername() + "</td>\n" +
+                                    "                   <td class=\"col-1 td5\">" + brs.get(i).getBorrowDays() + "</td>\n" +
+                                    "                   <td class=\"col-2 text-right td6\">" + brs.get(i).getDeadline() + "</td>\n" +
                                     "                   <td class=\"col-2 text-right\">\n" +
-                                    "                       <button class=\"btn btn-success btn-sm\" type=\"button\">修改</button>\n" +
+                                    "                       <button class=\"btn btn-success btn-sm\" type=\"button\" onclick=\"updateBtn(" + brs.get(i).getRecordId() + ")\">修改</button>\n" +
                                     "                       <button class=\"btn btn-danger btn-sm\" type=\"button\" onclick=\"deleteFn(" + brs.get(i).getRecordId() + ")\">删除</button>\n" +
                                     "                   </td>\n" +
                                     "               </tr>");
@@ -195,6 +200,66 @@
                 %>
                 </tbody>
             </table>
+            <%--        修改借阅记录模态框--%>
+            <div class="modal fade" id="updateModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">请输入借阅记录信息：</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            <form id="update" role="form">
+                                <div class="input-group pb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="recordId">记录号：</label>
+                                    </div>
+                                    <input type="text" class="form-control disabled" name="recordId" id="recordId"
+                                           required disabled>
+                                </div>
+                                <div class="input-group pb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="upBookName">书名：</label>
+                                    </div>
+                                    <input type="text" class="form-control disabled" name="upBookName" id="upBookName"
+                                           required disabled>
+                                </div>
+                                <div class="input-group pb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="bPStuNo">借阅人学号：</label>
+                                    </div>
+                                    <input type="text" class="form-control" name="bPStuNo" id="bPStuNo"
+                                           required disabled>
+                                </div>
+                                <div class="input-group pb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="bPName">借阅人姓名：</label>
+                                    </div>
+                                    <input type="text" class="form-control" name="bPName" id="bPName"
+                                           required disabled>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="newBrDays">借阅的天数：</label>
+                                    </div>
+                                    <input type="text" class="form-control" name="newBrDays" id="newBrDays"
+                                           required>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button type="submit" form="update" class="btn btn-success" onclick="updateFn('update')">修改
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -229,8 +294,7 @@
         <ul class="pagination">
             <li class="page-item">
                 <label class="page-link disabled" onselectstart="return false">
-                    显示第
-                    <span id="pageNow">1</span>页：
+                    显示第<span id="pageNow">1</span>页：
                     <span id="stRd">1</span>-
                     <span id="edRd">
                         <%=pageSize%>
