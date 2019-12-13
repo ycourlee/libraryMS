@@ -14,7 +14,8 @@ import java.sql.Statement;
  */
 public class InsertBR {
     public int insertBR(BorrowRecord br){
-        String sql="insert into library.borrowrecord(stuNo, borrowDays, bookNo) values ("+br.getStuNo()+","+br.getBorrowDays()+","+br.getBookNo()+")";
+        String sql="insert into library.borrowrecord(stuNo, borrowDays, bookNo, deadline) values ('"+br.getStuNo()+"',"+br.getBorrowDays()+","+br.getBookNo()+", DATE_ADD(CURRENT_DATE,INTERVAL "+br.getBorrowDays()+" DAY))";
+        System.out.println(sql);
         Connection conn = DBUtil.getConn();
         Statement stmt=null;
         int success=0;

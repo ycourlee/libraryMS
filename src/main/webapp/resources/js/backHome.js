@@ -11,7 +11,8 @@ $(document).ready(function () {
      * 清空为菜单按钮设置的右边框style
      */
     function emp() {
-        $("button[style='border-right: 2px solid #000;border-bottom-right-radius: 0;border-top-right-radius: 0']").removeAttr("style");
+        //border-right: 2px solid rgb(0, 0, 0); border-bottom-right-radius: 0px; border-top-right-radius: 0px;
+        $("button.btn-info").removeAttr("style");
         // $("button").removeAttr("style");//这句话会让 修改 按钮显示
     }
 
@@ -20,9 +21,9 @@ $(document).ready(function () {
         //都先清空所有，
         emp();
         brBtn$.css({
-            "border-right": "2px solid #000",
-            "border-bottom-right-radius": "0",
-            "border-top-right-radius": "0"
+            "border-right": "2px solid rgb(0, 0, 0)",
+            "border-bottom-right-radius": "0px",
+            "border-top-right-radius": "0px"
         });
         brDiv$.css("display", "block");
     });

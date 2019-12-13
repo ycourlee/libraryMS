@@ -262,9 +262,27 @@
             </div>
         </div>
     </div>
+    <div id="bookInfoDiv" style="display: none">
+        <div class="container-fluid mr-0 ml-0">
+            <table class="table table-hover row mx-0 mb-0">
+                <thead class="w-100 thead-light">
+                <tr class="row">
+                    <th class="col-1">记录号</th>
+                    <th class="col-2">书名</th>
+                    <th class="col-2">借阅人学号</th>
+                    <th class="col-2">借阅人姓名</th>
+                    <th class="col-1">借阅天数</th>
+                    <th class="col-2 text-right">借阅期限</th>
+                    <th class="col-2 text-right">操作</th>
+                </tr>
+                </thead>
+                <tbody class="w-100">
 
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
 <%--分页组件--%>
 <div class="float-right">
     <div class="col align-items-end">
@@ -288,7 +306,6 @@
         </ul>
     </div>
 </div>
-
 <div class="float-right">
     <div class="col">
         <ul class="pagination">

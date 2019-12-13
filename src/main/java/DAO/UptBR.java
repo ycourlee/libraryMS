@@ -13,7 +13,7 @@ import java.sql.Statement;
  */
 public class UptBR {
     public int uptBR(int key, int newBrDays){
-        String sql="update library.borrowrecord set borrowDays="+newBrDays+" where recordId="+key+"";
+        String sql="update library.borrowrecord set borrowDays="+newBrDays+",deadline=date_add(current_date,interval "+newBrDays+" day ) where recordId="+key+"";
         System.out.println(sql);
         Connection conn = DBUtil.getConn();
         Statement stmt=null;
