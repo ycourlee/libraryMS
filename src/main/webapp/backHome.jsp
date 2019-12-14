@@ -32,10 +32,10 @@
     <meta charset="UTF-8"/>
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="resources/bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="resources/bootstrap-4.0.0-dist/js/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    <script src="resources/bootstrap-4.0.0-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="resources/js/backHome.js"></script>
 </head>
 <body>
@@ -54,7 +54,7 @@
             </small>
         </p>
         <p class="mt-1 mb-0">
-            <a href="${pageContext.request.contextPath}/logoutServlet" class="text-primary"><small>退出登录</small></a>
+            <a href="/logoutServlet" class="text-primary"><small>退出登录</small></a>
         </p>
     </div>
     <div class="btn-group-vertical">
@@ -103,6 +103,7 @@
 </div>
 <%--右边内容区--%>
 <div class="float-right container col-10 bg-light">
+<%--    借阅信息栏目--%>
     <div id="brDiv" style="display: none">
         <%--    借阅管理--%>
         <button class="btn btn-outline-warning mt-3 mb-3" type="button" data-toggle="modal" data-target="#addModal">
@@ -262,18 +263,21 @@
             </div>
         </div>
     </div>
+<%--    馆藏信息栏目--%>
     <div id="bookInfoDiv" style="display: none">
         <div class="container-fluid mr-0 ml-0">
             <table class="table table-hover row mx-0 mb-0">
                 <thead class="w-100 thead-light">
                 <tr class="row">
-                    <th class="col-1">记录号</th>
+                    <th class="col-1">书号</th>
                     <th class="col-2">书名</th>
-                    <th class="col-2">借阅人学号</th>
-                    <th class="col-2">借阅人姓名</th>
-                    <th class="col-1">借阅天数</th>
-                    <th class="col-2 text-right">借阅期限</th>
-                    <th class="col-2 text-right">操作</th>
+                    <th class="col-1">作者</th>
+                    <th class="col-1">馆藏数目</th>
+                    <th class="col-1">版本</th>
+                    <th class="col-2">书本简评</th>
+                    <th class="col-1 text-right">价格</th>
+                    <th class="col-1 text-right">出版日期</th>
+                    <th class="col-2">出版社</th>
                 </tr>
                 </thead>
                 <tbody class="w-100">
