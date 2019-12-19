@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "signUpFilter",urlPatterns = "/signUpServlet")
+//@WebFilter(filterName = "signUpFilter",urlPatterns = "/signUpServlet")
 public class signUpFilter implements Filter {
     public void destroy() {
     }

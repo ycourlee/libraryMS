@@ -1,4 +1,25 @@
+var con1="<div class=\"float-right\">\n" +
+    "    <div class=\"col\">\n" +
+    "        <ul class=\"pagination\">\n" +
+    "            <li class=\"page-item\">\n" +
+    "                <label class=\"page-link disabled\" onselectstart=\"return false\">\n" +
+    "                    显示第<span id=\"pageNow\">1</span>页：\n" +
+    "                    <span id=\"stRd\">1</span>-\n" +
+    "                    <span id=\"edRd\">\n" +
+    "                        <%=pageSize%>\n" +
+    "                    </span>条记录，共\n" +
+    "                    <span id=\"totalPages\">\n" +
+    "                        <%=totalPages%>\n" +
+    "                    </span>\n" +
+    "                    页<%=totalLines%>条\n" +
+    "                </label>\n" +
+    "            </li>\n" +
+    "        </ul>\n" +
+    "    </div>\n" +
+    "</div>";
+
 $(document).ready(function () {
+    var myBBtn$ = $("#myBBtn");
     var wyBtn$ = $("#wyBtn");
     var xsBtn$ = $("#xsBtn");
     var gcBtn$ = $("#gcBtn");
@@ -14,41 +35,33 @@ $(document).ready(function () {
     }
 
     //页面刚被加载
-    alert("欢迎你"+$("#uName").text());
 
-    xsBtn$.click(function () {
+    function transBtn(btn$) {
         emp();
-        xsBtn$.css({
+        btn$.css({
             "border-right": "2px solid #000",
             "border-bottom-right-radius": "0",
             "border-top-right-radius": "0"
         });
+    }
+
+    myBBtn$.click(function () {
+        transBtn(myBBtn$);
     });
+    myBBtn$.click();
+    xsBtn$.click(function () {
+        transBtn(xsBtn$);
+    });
+
     gcBtn$.click(function () {
-        emp();
-        gcBtn$.css({
-            "border-right": "2px solid #000",
-            "border-bottom-right-radius": "0",
-            "border-top-right-radius": "0"
-        });
+        transBtn(gcBtn$);
     });
     xxBtn$.click(function () {
-        emp();
-        xxBtn$.css({
-            "border-right": "2px solid #000",
-            "border-bottom-right-radius": "0",
-            "border-top-right-radius": "0"
-        });
+        transBtn(xxBtn$);
     });
     wyBtn$.click(function () {
-        emp();
-        wyBtn$.css({
-            "border-right": "2px solid #000",
-            "border-bottom-right-radius": "0",
-            "border-top-right-radius": "0"
-        });
+        transBtn(wyBtn$);
     });
-
 
     /**
      * 表格处理部分
@@ -208,10 +221,10 @@ $(document).ready(function () {
     });
 
     /*由于修改按钮很多，这里采用触发的方式，每个按钮的点击都会触发总按钮，就只需要一个模态框了*/
-    $("#mainBtn").click(function (event,id) {
-        var str="#tr"+id;
+    $("#mainBtn").click(function (event, id) {
+        var str = "#tr" + id;
         // alert($(str).children(".td1").text());
-        var sel$=$(str);
+        var sel$ = $(str);
         $("#recordId").val(sel$.children(".td1").text());
         $("#upBookName").val(sel$.children(".td2").text());
         $("#bPStuNo").val(sel$.children(".td3").text());
@@ -258,7 +271,7 @@ function insertFn(form) {
 }
 
 function updateFn(form) {
-    var key=document.forms[form]["recordId"].value;
+    var key = document.forms[form]["recordId"].value;
     var newBrDays = document.forms[form]["newBrDays"].value;
     $.ajax({
         method: "post",
@@ -276,5 +289,5 @@ function updateFn(form) {
 //每个修改按钮都要执行
 function updateBtn(id) {
     // alert(id);
-    $("#mainBtn").trigger("click",id);
+    $("#mainBtn").trigger("click", id);
 }

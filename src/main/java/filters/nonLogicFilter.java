@@ -33,9 +33,6 @@ public class nonLogicFilter implements Filter {
                 }else
                     chain.doFilter(req,resp);
             }
-            if(uri.contains(pass[6])){
-                chain.doFilter(req, resp);
-            }
         }
         else if(uri.contains(pass[0])||uri.contains(pass[3])||uri.contains(pass[4])){
             /**    loginServlet resources signUpServlet 这里先放行signUpServlet, 使用精准filter拦截    */
@@ -56,7 +53,7 @@ public class nonLogicFilter implements Filter {
             if(signSes!=null&&signSes.equals("yes")){
                 chain.doFilter(req,resp);
             }
-        }else if(uri.contains("Servlet")){
+        }else if(uri.contains("Servlet")||uri.contains(pass[6])){
             System.out.println("kk");
             chain.doFilter(req, resp);
         }
